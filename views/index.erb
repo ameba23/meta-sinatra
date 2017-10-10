@@ -4,6 +4,15 @@
   </head>
   <body>
     <p>ddddfff <%= Time.now %></p>
-    <p><%= @result2['hash'] %></p>
+    <% @result['rows'].each do |item| %> 
+      <% data2 = RestClient.get "#{DB}/#{item['id']}" %>
+      <% result1 = JSON.parse(data2) %>
+      <% if result1['_id'].include? "_design" %>
+      <% else %> 
+        <% result1.each do |keys| %>
+          <p><%= keys %></p>
+        <% end %>
+      <% end %>
+    <% end %>
   </body>
 </html>
