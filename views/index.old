@@ -1,7 +1,6 @@
 <html>
   <head>
     <title>metadb</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
     <h1>metadb</h1>
@@ -11,15 +10,15 @@
       <li><%= numberimages %> <a href="images">images</a></li>
     </ul>
     <hr>
-    <table>
-        <th>Filename</th>
-        <th>size</th>
-        <% somefiles.each do |item| %> 
-          <tr>
-            <td><%= item['key'] %></td>
-            <td><%= item['value'] %></td>
-          </tr>
+    <% @result['rows'].each do |item| %> 
+      <% data2 = RestClient.get "#{DB}/#{item['id']}" %>
+      <% result1 = JSON.parse(data2) %>
+      <% if result1['_id'].include? "_design" %>
+      <% else %> 
+        <% result1.each do |keys| %>
+          <p><%= keys %></p>
+        <% end %>
       <% end %>
-    </table>
+    <% end %>
   </body>
 </html>
