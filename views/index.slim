@@ -1,0 +1,28 @@
+div
+  | DB contains 
+  => numberof('files') 
+  | files consisting of
+ul
+  li 
+    => numberof('audio') 
+    a href="filetype/audio" audio 
+    | files
+  li 
+    => numberof('images')
+    a href="filetype/images" images
+hr
+table
+  th Filename
+  - somefiles('files')[0]['value'].each do |fieldname|
+    th 
+      = fieldname[0]
+  - somefiles('files').each do |item|
+    tr
+      td
+        a href="files/#{item['id']}" 
+          = item['key']
+      - item['value'].each do |field|
+        td 
+          = field[1]
+hr
+p not yet implemented: search, random file, upload json, dump db (with or without compression)

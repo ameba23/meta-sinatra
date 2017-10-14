@@ -1,0 +1,17 @@
+h3 
+  = @hash['_id']
+  =< @hash['File:FileName']
+h4 todo
+ul
+  li title is hash/filename
+  li edit fields?
+  li add comment
+  li add stars
+  li add filetype-specific stuff such as query external api
+table
+  - @hash.each do |field|
+    tr
+      td
+        strong = field[0]
+      td
+        = field[1]

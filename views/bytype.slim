@@ -1,0 +1,16 @@
+h2 
+  => @filetype
+  | files
+table
+  th Filename
+  - somefiles(@filetype)[0]['value'].each do |fieldname|
+    th 
+      = fieldname[0]
+  - somefiles(@filetype).each do |item|
+    tr
+      td
+        a href="/files/#{item['id']}" 
+          = item['key']
+      - item['value'].each do |field|
+        td 
+          = field[1]
