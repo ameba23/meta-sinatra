@@ -1,0 +1,15 @@
+{
+    "_id": "_design/tryit",
+    "views": {
+        "images": {
+            "map": "function (doc) {\n  if (doc['File:MIMEType'].substring(0,5) == 'image') {\n    emit(doc['File:FileName'], {'Filesize': doc['File:FileSize'], 'MIMEType': doc['File:MIMEType']} );\n  };\n}"
+        },
+        "audio": {
+            "map": "function (doc) {\n  if (doc['File:MIMEType'].substring(0,5) == 'audio') {\n    emit(doc['File:FileName'], {'Filesize': doc['File:FileSize'], 'MIMEType': doc['File:MIMEType']} );    \n  };\n}"
+        },
+        "files": {
+            "map": "function (doc) {\n  if (doc['File:FileName']) {\n    emit(doc['File:FileName'], {'Filesize': doc['File:FileSize'], 'MIMEType': doc['File:MIMEType']} );\n  };\n}"
+        }
+    },
+    "language": "javascript"
+}

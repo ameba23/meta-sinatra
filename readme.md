@@ -3,6 +3,22 @@ first try at a web frontend to metadb using sinatra
 
 * Need to find a way to easily put the couchdb design doc under version control
 
+## Quick way to dump json from file into couchdb using curl
+'''
+cat file.json | curl -H "Content-Type: application/json" -d @- -X POST http://$DB/_bulk_docs
+'''
+Note that the json file must contain documents wrapped into "docs" like so and have the correct MIME type as specified in the curl command above:
+'''
+{
+  "docs": [
+    {
+        "_id": "something",
+        "anotherfiled": "somethingelse"
+    }
+  ]
+}
+'''
+
 ## Design doc in its current experimental state
 '''
 {
