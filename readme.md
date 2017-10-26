@@ -1,5 +1,5 @@
 # meta-sinatra
-first try at a web frontend to metadb using sinatra
+first try at a web frontend to [metadb](https://github.com/ameba23/meta-database) using Sinatra
 
 ## live demo
 Live demo at [http://185.203.118.36](http://185.203.118.36).  This is under active development and may go down or change.
