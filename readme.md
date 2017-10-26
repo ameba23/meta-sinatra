@@ -1,12 +1,15 @@
 # meta-sinatra
 first try at a web frontend to metadb using sinatra
 
-* Need to find a way to easily put the couchdb design doc under version control
+## live demo
+Live demo at [http://185.203.118.36](http://185.203.118.36).  This is under active development and may go down or change.
 
 ## Quick way to dump json from file into couchdb using curl
 '''
 cat file.json | curl -H "Content-Type: application/json" -d @- -X POST http://$DB/_bulk_docs
 '''
+where $DB is the location of couchdb database, eg: 'http://user:password@localhost:5984/metadb'
+
 Note that the json file must contain documents wrapped into "docs" like so and have the correct MIME type as specified in the curl command above:
 '''
 {
@@ -19,22 +22,12 @@ Note that the json file must contain documents wrapped into "docs" like so and h
 }
 '''
 
-## Design doc in its current experimental state
+## CouchDB Design doc
+
+This is designdoc.json, and can be added or updated with:
+
 '''
-{
-  "_id": "_design/tryit",
-  "_rev": "10-796b403937666537b127d8fedfbade5f",
-  "views": {
-    "images": {
-      "map": "function (doc) {\n  if (doc['File:MIMEType'].substring(0,5) == 'image') {\n    emit(doc['File:MIMEType'], doc['File:FileName']);\n  };\n}"
-    },
-    "audio": {
-      "map": "function (doc) {\n  if (doc['File:MIMEType'].substring(0,5) == 'audio') {\n    emit(doc['File:MIMEType'], doc['File:FileName']);\n  };\n}"
-    },
-    "files": {
-      "map": "function (doc) {\n  if (doc['File:FileName']) {\n    emit(doc['File:FileName'], doc['File:FileSize']);\n  };\n}"
-    }
-  },
-  "language": "javascript"
-}
+cat designdoc.json | curl -H "Content-Type: application/json" -d @- -X POST http://$DB/_design/tryit
 '''
+
+
