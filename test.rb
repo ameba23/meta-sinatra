@@ -51,4 +51,6 @@ get '/files/:hash' do
   slim :hash
 end
 
-
+post '/updatesite' do
+  system('touch hello.txt')  
+end 
