@@ -52,5 +52,6 @@ get '/files/:hash' do
 end
 
 post '/updatesite' do
-  system('touch hello.txt')  
+  system('git pull origin master')
+  system('touch tmp/restart.txt')  
 end 
