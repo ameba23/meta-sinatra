@@ -50,3 +50,5 @@ get '/files/:hash' do
   @hash = JSON.parse(RestClient.get "#{DB}/#{params[:hash]}")
   slim :hash
 end
+
+
