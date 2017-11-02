@@ -11,11 +11,16 @@ ul
 table
   - lastfield = ""
   - @hash.each do |field|
+    - if field[0].split(":")[0] != lastfield    
+      - lastfield = field[0].split(":")[0]
+      tr
+        td 
+          strong = field[0].split(":")[0]
+        td
+        td
     tr
       td
-        - if field[0].split(":")[1] != lastfield
-          hr
-          - lastfield = field[0].split(":")
-        strong = field[0].split(":")
+      td
+        strong = field[0].split(":")[1]
       td
         = field[1]

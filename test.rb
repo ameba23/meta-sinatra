@@ -13,6 +13,7 @@ require 'slim'
 #   use couchrest or somethign similar?
 #   switch to rails?
 
+# load db location from config file:
 if File.exist?("metadb.conf")
   DB = YAML.load_file("metadb.conf")["db"]
 else
