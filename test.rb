@@ -2,6 +2,7 @@ require 'sinatra'
 require 'json'
 require 'rest_client'
 require 'thin'
+require 'yaml'
 require 'slim'
 
 # todo:
@@ -12,7 +13,11 @@ require 'slim'
 #   use couchrest or somethign similar?
 #   switch to rails?
 
-DB = 'http://localhost:5984/metadb'
+if File.exist?("metadb.conf")
+  DB = YAML.load_file("metadb.conf")["db"]
+else
+  DB = 'http://localhost:5984/metadb'
+end
 
 
 def numberof(filetype)

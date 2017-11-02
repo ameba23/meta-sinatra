@@ -9,9 +9,13 @@ ul
   li add stars
   li add filetype-specific stuff such as query external api
 table
+  - lastfield = ""
   - @hash.each do |field|
     tr
       td
-        strong = field[0]
+        - if field[0].split(":")[1] != lastfield
+          hr
+          - lastfield = field[0].split(":")
+        strong = field[0].split(":")
       td
         = field[1]
