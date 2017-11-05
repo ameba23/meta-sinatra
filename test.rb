@@ -6,10 +6,8 @@ require 'yaml'
 require 'slim'
 
 # todo:
-#   use hash as _id
 #   view x recently added files on front page -need to add timestamp?
 #   wirte view to calculate approximate sizes
-#   read db name from config file?
 #   use couchrest or somethign similar?
 #   switch to rails?
 

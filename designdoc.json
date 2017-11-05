@@ -1,5 +1,6 @@
 {
     "_id": "_design/tryit",
+    "_rev": "willbeupdated",
     "views": {
         "images": {
             "map": "function (doc) {\n  if (doc['File:MIMEType'].substring(0,5) == 'image') {\n    emit(doc['File:FileName'], {'Filesize': doc['File:FileSize'], 'MIMEType': doc['File:MIMEType']} );\n  };\n}"
@@ -9,7 +10,11 @@
         },
         "files": {
             "map": "function (doc) {\n  if (doc['File:FileName']) {\n    emit(doc['File:FileName'], {'Filesize': doc['File:FileSize'], 'MIMEType': doc['File:MIMEType']} );\n  };\n}"
+        },
+        "docs": {
+            "map": "function (doc) {\n  if (['epub','pdf'].indexOf(doc['File:FileType'].toLowerCase()) > -1) {\n    emit(doc['File:FileName'], {'Filesize': doc['File:FileSize'], 'MIMEType': doc['File:MIMEType']} );    \n  };\n}"
         }
     },
     "language": "javascript"
 }
+
