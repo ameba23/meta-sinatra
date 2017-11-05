@@ -1,6 +1,7 @@
 h2 
   => @filetype
-  | files
+  - if @filetype = 'audio'
+    | files
 table
   th Filename
   - somefiles(@filetype)[0]['value'].each do |fieldname|

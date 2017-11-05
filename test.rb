@@ -56,6 +56,7 @@ get '/files/:hash' do
 end
 
 post '/updatesite' do
+  # add secret from github webhook
   system('git pull origin master')
   system('touch tmp/restart.txt')  
 end 
