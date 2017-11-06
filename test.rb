@@ -43,7 +43,7 @@ end
 
 # Pages listing files by category (eg: audio)
 get '/filetype/:filetype' do
-  @page_title = params[:filetype]
+  @page_title = {'audio' => 'audio files', 'images' => 'image files', 'docs' => 'books and documents', 'video' => 'video files'}[params[:filetype]]
   @filetype = params[:filetype]
   slim :bytype
 end
@@ -57,6 +57,7 @@ end
 
 post '/updatesite' do
   # add secret from github webhook
+  # add git stash?
   system('git pull origin master')
   system('touch tmp/restart.txt')  
 end 

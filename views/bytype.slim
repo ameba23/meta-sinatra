@@ -1,7 +1,5 @@
 h2 
-  => @filetype
-  - if @filetype = 'audio'
-    | files
+  = @page_title
 table
   th Filename
   - somefiles(@filetype)[0]['value'].each do |fieldname|
