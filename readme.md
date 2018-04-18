@@ -1,17 +1,22 @@
 # meta-sinatra
-first try at a web frontend to [metadb](https://github.com/ameba23/meta-database) using Sinatra
+
+a web frontend to [metadb](https://github.com/ameba23/meta-database) using Sinatra (in alpha)
 
 
 ## live demo
-Live demo at [http://185.203.118.36](http://185.203.118.36).  This is under active development and may go down or change.
+
+Live demo on heroku at [meta-db.herokuapp.com/](https://meta-db.herokuapp.com/).  
+This is under active development and may go down or change.
 
 ## Configuration
 
 This requires a connection to a couchdb instance with the database to use.  This can be defined in a yaml file called 'metadb.conf' containing:
 
 ```
-db: http://host:5984/dbname
+db: http://username:password@host:5984/dbname
 ```
+or an enviroment variable called 'DB_URL' with the url. 
+
 
 ## Quick way to dump json from file into couchdb using curl
 
@@ -36,7 +41,7 @@ Note that the json file must contain documents wrapped into "docs" like so and h
 
 ## CouchDB Design doc
 
-This is designdoc.json, and can be added or updated with:
+This is included in the repository as designdoc.json, and can be added or updated with:
 
 ```
 cat designdoc.json | curl -H "Content-Type: application/json" -d @- -X POST http://$DB/_design/tryit
