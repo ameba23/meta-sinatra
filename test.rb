@@ -15,7 +15,8 @@ require 'slim'
 if File.exist?("metadb.conf")
   DB = YAML.load_file("metadb.conf")["db"]
 else
-  DB = 'http://localhost:5984/metadb'
+  DB = ENV['DB_URL']
+ #DB = 'http://localhost:5984/metadb'
 end
 
 
