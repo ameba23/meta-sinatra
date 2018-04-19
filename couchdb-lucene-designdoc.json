@@ -1,0 +1,12 @@
+{
+    "_id":"_design/lucene",
+    "_rev":"onetry",
+    "fulltext": {
+        "by_subject": {
+            "index":"function(doc) { var ret=new Document(); ret.add(doc.subject); return ret }"
+        },
+        "by_content": {
+            "index":"function(doc) { var ret=new Document(); ret.add(doc.content); return ret }"
+        }
+    }
+}
